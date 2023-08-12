@@ -7,7 +7,7 @@
                         <v-card 
                             class="d-flex align-center justify-center"
                             v-bind="props"
-                            :color="isHovering ? additionalColor : undefined"
+                            :color="(tab == index) ? 'indigo'  : (isHovering) ? additionalColor : 'undefind' "
                             @click="selectTab(index)"
                         >
                             <v-card-title>
@@ -19,7 +19,6 @@
 
             </v-col>
         </v-row>
-        {{ tab }}
     </v-container>
 
 </template>
@@ -40,4 +39,5 @@ function selectTab(index){
 }
 
 const additionalColor = inject("additionalColor")
-</script>
+</script>                            
+<!-- :color=" isHovering ? additionalColor : undefined" -->

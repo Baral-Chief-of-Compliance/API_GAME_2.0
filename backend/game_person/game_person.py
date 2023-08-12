@@ -52,3 +52,23 @@ def inf_game_person(id_gp):
         game_person_db.update_gp([name_gp, type_gp, id_gp])
 
         return jsonify(f"game person width {id_gp} is updated")
+
+
+@game_person.route('/game_persons/<int:id_gp>/information', methods=['GET', 'POST', 'PUT'])
+def game_person_information(id_gp):
+    if request.method == 'GET':
+        stories_json = []
+        stories = game_person_db.get_stories(id_gp)
+
+        for story in stories:
+            stories_json.append(
+                {
+                    "id_stgp": story[0],
+                    "confidence_gp": story[1],
+                    "story": story[2]
+                }
+            )
+
+        return jsonify({
+            "stories": stories_json
+        })
