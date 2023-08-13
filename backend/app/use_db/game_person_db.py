@@ -26,6 +26,6 @@ def update_gp(*args):
 
 
 def get_stories(id_gp):
-    inf = quarry.call("select (id_stgp, confidence_gp, story) from story_gp where story_gp.id_gp = %s", [id_gp], commit=False, fetchall=True)
+    inf = quarry.call("select id_stgp, confidence_gp, story from story_gp where story_gp.id_gp = %s", [id_gp], commit=False, fetchall=True)
 
     return inf

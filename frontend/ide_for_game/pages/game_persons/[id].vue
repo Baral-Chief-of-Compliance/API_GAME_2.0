@@ -1,13 +1,19 @@
 <template>
     <v-container>
         <TitlePage :title="makeTitle(gamePerson.name)" />
+        <ButtonBack title="назад к персонажам" @click="BackPersons" />
         <Tubs 
             :tab="tab"
             :tabs="['Информация', 'Характеристики','Иконка', 'Анимации']" 
             @get-index="updateIndex"
         />
 
-        <GamePersonInf v-if="tab == 0" />
+        <GamePersonInf 
+            :hero-name="gamePerson.name" 
+            :heto-type="gamePerson.type"
+            :hero-id="router.params.id"
+            v-if="tab == 0" 
+        />
         <GamePersonCharacteristics v-else-if="tab == 1" />
         <GamePersonGamePesonIcon v-else-if="tab == 2"/>
         <GamePersonGamePersonsAnimation v-else-if="tab == 3"/>
@@ -28,6 +34,7 @@ import axios from 'axios';
         type: ""
     })
     const router = useRoute()
+    const Router = useRouter()
 
 
     function updateIndex(index){
@@ -47,6 +54,10 @@ import axios from 'axios';
                 gamePerson.type = response.data.type_gp;
             }
         )
+    }
+
+    function BackPersons(){
+            Router.push({name: "game_persons"})
     }
 
 
