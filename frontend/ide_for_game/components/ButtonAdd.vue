@@ -1,34 +1,24 @@
 <template>
-    <v-dialog>
-        <template v-slot:activator="{ props }">
             <v-btn 
-                    v-model="dialog"
+                    v-model="dialog.status"
                     color="indigo"
                     block
                     class="mt-15"
                     v-bind="props"
                 >
                     {{ title }}
+
+                <v-dialog
+                    v-model="dialog"
+                    activator="parent"
+                    width="auto"
+                >
+                    <GamePersonCardsGamePersonsAddInf :close="closeDialog" :dialog="dialog" />
+                </v-dialog>
             </v-btn> 
-        </template>
-
-        <v-card>
-            <v-card-text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </v-card-text>
-            <v-card-actions>
-            <v-btn color="primary" block @click="dialog.status = false">Close Dialog</v-btn>
-            </v-card-actions>
-        </v-card>
-
-    </v-dialog>
 </template>
 
 <script setup>
-
-    const dialog = reactive({
-        status: false
-    })
 
     const props = defineProps(
         {
@@ -36,4 +26,21 @@
         }
     )
 
+</script>
+
+
+<script>
+  export default {
+    data () {
+      return {
+        dialog: false,
+      }
+    },
+
+    methods: {
+        closeDialog(){
+            this.dialog = false
+        } 
+    }
+  }
 </script>
