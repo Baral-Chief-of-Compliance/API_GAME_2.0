@@ -90,6 +90,8 @@ const task = reactive({
     description: "",
     author: "",
     date_end: "",
+    status: "notDone",
+    completed: "nobody"
 });
 
 
