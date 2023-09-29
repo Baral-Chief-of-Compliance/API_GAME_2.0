@@ -4,8 +4,9 @@
         max-width="500"
     >
         <v-text-field
+            :rules="rules"
             :label="label"
-            variant="outlined"
+            variant="solo-inverted"
             @change="$emit('customChange', $event.target.value)"
         >
         </v-text-field>
@@ -16,7 +17,11 @@
 <script>
     export default{
         props:{
-            label: String
+            label: String,
+            rules: {
+                type: Array,
+                required: false
+            }
         }
     }
 </script>

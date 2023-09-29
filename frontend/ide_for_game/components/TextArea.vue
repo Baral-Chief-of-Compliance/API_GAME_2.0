@@ -5,9 +5,10 @@
         max-width="500"
     >
         <v-textarea 
-            :label="label" 
-            rows="20"
-            variant="outlined"
+            :label="label"
+            :rules="rules" 
+            rows="8"
+            variant="solo-inverted"
             @change="$emit('customChange', $event.target.value)"
         >
             
@@ -19,7 +20,11 @@
 <script>
     export default{
         props:{
-            label: String
+            label: String,
+            rules: {
+                type: Array,
+                required: false
+            }
         }
     }
 </script>

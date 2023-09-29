@@ -55,6 +55,30 @@
                     </template>
                 </v-list-item>
             </NuxtLink>
+
+            <NuxtLink to="/locations">
+                <v-list-item prepend-icon="mdi-star" title="Локации" value="locations">
+                    <template v-slot:prepend>
+                        <NavigationIcon icon_name="fa6-solid:location-dot"/>
+                    </template>
+                </v-list-item>
+            </NuxtLink>
+
+            <NuxtLink to="/tasks">
+                <v-list-item prepend-icon="mdi-star" title="Задачи" value="tasks">
+                    <template v-slot:prepend>
+                        <NavigationIcon icon_name="fa6-solid:location-crosshairs"/>
+                    </template>
+                </v-list-item>
+            </NuxtLink>
+
+            <NuxtLink to="/notes">
+                <v-list-item prepend-icon="mdi-star" title="Заметки" value="notes">
+                    <template v-slot:prepend>
+                        <NavigationIcon icon_name="fa6-solid:clipboard"/>
+                    </template>
+                </v-list-item>
+            </NuxtLink>
             
             
           </v-list>

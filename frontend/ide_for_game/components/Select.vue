@@ -4,14 +4,14 @@
         max-width="500"
     >
         <v-select
+            :rules="rules"
             :label="label"
             :items="items"
             v-model="selected"
-            variant="outlined"
+            variant="solo-inverted"
         >   
 
         </v-select>
-        {{ selected }}
     </v-responsive>
 </template>
 
@@ -28,7 +28,11 @@
     export default{
         props: {
             label: String,
-            items: Array
+            items: Array,
+            rules: {
+                type: Array,
+                required: false
+            }
         }
     }
 </script>
