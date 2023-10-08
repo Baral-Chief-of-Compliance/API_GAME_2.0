@@ -3,6 +3,7 @@ package model
 import (
 	"database/sql"
 	"fmt"
+	"log"
 )
 
 type User struct {
@@ -71,4 +72,24 @@ func UpdateUser(db *sql.DB, id string, user User) (string, error) {
 
 	result := fmt.Sprintf("user id %s is updated", id)
 	return result, nil
+}
+
+func GetInfUserLogin(db *sql.DB, login string) (string, error) {
+	var hashPass string
+	sqlStatement := `select users.pass_hash from users where users.login_user = $1`
+	row := db.QueryRow(sqlStatement, login)
+
+	err := row.Scan(&hashPass)
+
+	switch err {
+	case sql.ErrNoRows:
+		fmt.Println("No rows were returned!")
+		return hashPass, err
+	case nil:
+		fmt.Println(hashPass)
+	default:
+		log.Fatal(err)
+	}
+
+	return hashPass, err
 }

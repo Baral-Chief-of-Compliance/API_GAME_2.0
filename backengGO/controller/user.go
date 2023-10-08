@@ -26,7 +26,7 @@ func AddUser(context *gin.Context) {
 	var user model.UserEnter
 	context.BindJSON(&user)
 
-	result, err := model.AddUser(database.DB, user.Name, user.PassHash)
+	result, err := model.AddUser(database.DB, user.Login, user.PassHash)
 
 	if err != nil {
 		log.Fatal(err)
